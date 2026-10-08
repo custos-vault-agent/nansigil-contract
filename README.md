@@ -61,6 +61,9 @@ cp .env.example .env
 make deploy      # writes the addresses to deployments/anvil.json
 make abi         # writes abi/NanSigil.json for clients
 make upgrade     # deploys a new implementation and upgrades the proxy
+make verify      # verifies the implementation and the proxy on a block explorer
 ```
+
+`make verify` uses `VERIFIER`, which defaults to `sourcify`. For an Etherscan-style explorer also set `VERIFIER_URL` and `VERIFIER_API_KEY`. The constructor arguments are read from the chain. If the upgrade authority or the attestor changed after deployment, pass the original values as `INIT_AUTHORITY` and `INIT_ATTESTOR`.
 
 CAUTION: SET `ATTESTOR_ADDRESS` TO THE ADDRESS THAT THE SIGNING SERVICE USES. IF THE TWO ADDRESSES ARE DIFFERENT, EVERY RELAYED PAYLOAD FAILS WITH `AttestationInvalid`.
